@@ -45,8 +45,8 @@ function fix_values_yaml_worker() {
   sha256sum       "${tarball_name}" > "${tarball_name}.sha256"
   rm -rf                            "${folder_name}"
 
-  gsutil cp "${tarball_name}"        "${gcs_folder_path}/${tarball_name}"
-  gsutil cp "${tarball_name}.sha256" "${gcs_folder_path}/${tarball_name}.sha256"
+  gsutil -q cp "${tarball_name}"        "${gcs_folder_path}/${tarball_name}"
+  gsutil -q cp "${tarball_name}.sha256" "${gcs_folder_path}/${tarball_name}.sha256"
   echo "DONE fixing  ${gcs_folder_path}/${tarball_name} with hub: ${CB_DOCKER_HUB} tag: ${CB_VERSION}"
 }
 
